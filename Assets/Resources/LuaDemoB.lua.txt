@@ -1,0 +1,11 @@
+require "EngineMain"
+
+local sphereComponent = {}
+
+sphereComponent.text = "Hello World"
+
+function sphereComponent:Awake( gameObject )
+	Debug.Log(gameObject.name.."Awake")
+end
+
+return sphereComponent

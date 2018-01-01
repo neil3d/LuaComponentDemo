@@ -1,0 +1,24 @@
+require "EngineMain"
+
+local demoComponent = {}
+
+function demoComponent:Awake( gameObject )
+	Debug.Log(gameObject.name.."Awake")
+	self.transform = gameObject.transform
+end
+
+function demoComponent:Start( gameObject )
+	Debug.Log(gameObject.name.."Start")
+
+	--演示LuaComponent代码互相调用
+	local sphereGO = GameObject.Find("Sphere")
+	local sphereLuaComp = LuaComponent.GetLuaComponent(sphereGO)
+	Debug.log("Sphere.LuaDemoB:"..sphereLuaComp.text)
+
+end
+
+function demoComponent:Update( gameObject )
+	self.transform:Rotate(0,20*Time.deltaTime,0)
+end
+
+return demoComponent
